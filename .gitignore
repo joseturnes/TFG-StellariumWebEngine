@@ -1,0 +1,17 @@
+*.o
+*.swp
+*~
+*.obj
+*.pyc
+*.vimrc
+*.ycm_extra_conf.py
+/todo
+/build*
+.sconsign.dblite
+/.cache
+Leap_Second.dat
+de421.bsp
+deltat.data
+deltat.preds
+hip_main.dat.gz
+
