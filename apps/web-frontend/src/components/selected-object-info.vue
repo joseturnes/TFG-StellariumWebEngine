@@ -122,7 +122,7 @@ export default {
     wikipediaLink: function () {
       const page = this.wikipediaData.query.pages[Object.keys(this.wikipediaData.query.pages)[0]]
       if (!page || !page.extract) return ''
-      return 'https://en.wikipedia.org/wiki/' + page.title
+      return 'https://gl.wikipedia.org/wiki/' + page.title
     },
     type: function () {
       if (!this.selectedObject) return this.$t('Unknown')
