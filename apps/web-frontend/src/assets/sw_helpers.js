@@ -410,7 +410,7 @@ const swh = {
     }
     if (!title) return Promise.reject(new Error("Can't find wikipedia compatible name"))
 
-    return fetch('https://en.wikipedia.org/w/api.php?action=query&redirects&prop=extracts&exintro&exlimit=1&exchars=300&format=json&origin=*&titles=' + title,
+    return fetch('http://localhost:8080/stellarium/astros/search/' + title,
       { headers: { 'Content-Type': 'application/json; charset=UTF-8' } })
       .then(response => {
         return response.json()

@@ -114,10 +114,10 @@ export default {
     },
     wikipediaSummary: function () {
       if (!this.wikipediaData) return ''
-      const page = this.wikipediaData.query.pages[Object.keys(this.wikipediaData.query.pages)[0]]
-      if (!page || !page.extract) return ''
-      const wl = '<b><a style="color: #62d1df;" target="_blank" rel="noopener" href="' + this.wikipediaLink + '">wikipedia</a></b></i>'
-      return page.extract.replace(/<p>/g, '').replace(/<\/p>/g, '') + '<span class="grey--text text-caption" style="margin-left:auto; margin-right:0;"><i>&nbsp; ' + this.$t('more on {0}', [wl]) + '</span>'
+      const page = this.wikipediaData.description
+      console.log(page)
+      if (!page) return ''
+      return page
     },
     wikipediaLink: function () {
       const page = this.wikipediaData.query.pages[Object.keys(this.wikipediaData.query.pages)[0]]
