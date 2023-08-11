@@ -133,7 +133,8 @@ export default {
           morpho = morpho + ' '
         }
       }
-      return morpho + swh.nameForSkySourceType(this.selectedObject.types[0])
+      console.log(swh.nameForSkySourceType(this.selectedObject.types[0]))
+      return swh.nameForSkySourceType(this.selectedObject.types[0]) + ' ' + morpho
     },
     icon: function () {
       return swh.iconForSkySource(this.selectedObject)

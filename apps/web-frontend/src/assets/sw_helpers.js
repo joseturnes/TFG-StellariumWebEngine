@@ -208,21 +208,37 @@ const swh = {
 
   nameForSkySourceType: function (otype) {
     const $stel = Vue.prototype.$stel
-    const res = $stel.otypeToStr(otype)
+    let res = $stel.otypeToStr(otype)
+    if (res.toLowerCase() === 'star') {
+      res = 'Estrela'
+    }
+    if (res.toLowerCase() === 'planet') {
+      res = 'Planeta'
+    }
+    if (res.toLowerCase() === 'moon') {
+      res = 'Lúa'
+    }
+    if (res.toLowerCase() === 'galaxy') {
+      res = 'Galaxia'
+    }
+    if (res.toLowerCase() === 'globular cluster') {
+      res = 'Cúmulo globular'
+    }
+
     return res || 'Unknown Type'
   },
 
   nameForGalaxyMorpho: function (morpho) {
     const galTab = {
-      E: 'Elliptical',
-      SB: 'Barred Spiral',
-      SAB: 'Intermediate Spiral',
-      SA: 'Spiral',
+      E: 'Elíptica',
+      SB: 'Espiral enreixada',
+      SAB: 'Espiral Intermedia',
+      SA: 'Espiral',
       S0: 'Lenticular',
-      S: 'Spiral',
+      S: 'Espiral',
       Im: 'Irregular',
-      dSph: 'Dwarf Spheroidal',
-      dE: 'Dwarf Elliptical'
+      dSph: 'Esferoidal enana',
+      dE: 'Elíptica enana'
     }
     for (const morp in galTab) {
       if (morpho.startsWith(morp)) {
@@ -368,46 +384,7 @@ const swh = {
 
   // Get data for a SkySource from wikipedia
   getSkySourceSummaryFromWikipedia: function (ss) {
-    let title
-    if (ss.model === 'jpl_sso') {
-      title = this.cleanupOneSkySourceName(ss.names[0]).toLowerCase()
-      if (['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'neptune', 'pluto'].indexOf(title) > -1) {
-        title = title + '_(planet)'
-      }
-      if (ss.types[0] === 'Moo') {
-        title = title + '_(moon)'
-      }
-    }
-    if (ss.model === 'mpc_asteroid') {
-      title = this.cleanupOneSkySourceName(ss.names[0]).toLowerCase()
-    }
-    if (ss.model === 'constellation') {
-      title = this.cleanupOneSkySourceName(ss.names[0]).toLowerCase() + '_(constellation)'
-    }
-    if (ss.model === 'dso') {
-      for (const i in ss.names) {
-        if (ss.names[i].startsWith('M ')) {
-          title = 'Messier_' + ss.names[i].substr(2)
-          break
-        }
-        if (ss.names[i].startsWith('NGC ')) {
-          title = ss.names[i]
-          break
-        }
-        if (ss.names[i].startsWith('IC ')) {
-          title = ss.names[i]
-          break
-        }
-      }
-    }
-    if (ss.model === 'star') {
-      for (const i in ss.names) {
-        if (ss.names[i].startsWith('* ')) {
-          title = this.cleanupOneSkySourceName(ss.names[i])
-          break
-        }
-      }
-    }
+    const title = this.cleanupOneSkySourceName(ss.names[0]).toLowerCase()
     if (!title) return Promise.reject(new Error("Can't find wikipedia compatible name"))
 
     return fetch('http://localhost:8080/stellarium/astros/search/' + title,
