@@ -79,7 +79,7 @@ pluginsLocales.keys().forEach(key => {
   }
 })
 
-const loc = 'en'
+const loc = 'gl'
 // Un-comment to select user's language automatically
 // loc = (navigator.language || navigator.userLanguage).split('-')[0] || 'en'
 Moment.locale(loc)

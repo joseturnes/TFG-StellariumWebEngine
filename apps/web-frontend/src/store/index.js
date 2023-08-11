@@ -61,8 +61,8 @@ const createStore = () => {
       },
 
       currentLocation: {
-        short_name: 'Unknown',
-        country: 'Unknown',
+        short_name: 'Descoñecido',
+        country: 'Descoñecido',
         street_address: '',
         lat: 0,
         lng: 0,

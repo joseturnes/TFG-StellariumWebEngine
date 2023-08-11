@@ -21,7 +21,7 @@
     <v-card-text style="padding-bottom: 5px;">
       <v-row v-if="otherNames.length > 1" style="width: 100%;">
         <v-col cols="12">
-          <span style="position: absolute;">{{ $t('Also known as') }}</span><span style="padding-left: 33.3333%">&nbsp;</span><span class="text-caption white--text" v-for="mname in otherNames1to7" :key="mname" style="margin-right: 15px; font-weight: 500;">{{ mname }}</span>
+          <span style="position: absolute;">{{ $t('Also known as') }}</span><span style="padding-left: 33.3333%">&nbsp;</span><span class="text-caption white--text" v-for="mname in otherNames1to7" :key="mname" style="margin-right: 15px;margin-left: 30px; font-weight: 500;">{{ mname }}</span>
           <v-btn small icon class="grey--text" v-if="otherNames.length > 8" v-on:click.native="showMinorNames = !showMinorNames" style="margin-top: -5px; margin-bottom: -5px;"><v-icon>mdi-dots-horizontal</v-icon></v-btn>
           <span class="text-caption white--text" v-for="mname in otherNames8andMore" :key="mname" style="margin-right: 15px; font-weight: 500">{{ mname }}</span>
         </v-col>
@@ -303,7 +303,7 @@ export default {
       }
       const ly = d * swh.astroConstants.ERFA_AULT / swh.astroConstants.ERFA_DAYSEC / swh.astroConstants.ERFA_DJY
       if (ly >= 0.1) {
-        return ly.toFixed(2) + '<span class="radecUnit"> light years</span>'
+        return ly.toFixed(2) + '<span class="radecUnit"> anos luz</span>'
       }
       if (d >= 0.1) {
         return d.toFixed(2) + '<span class="radecUnit"> AU</span>'
